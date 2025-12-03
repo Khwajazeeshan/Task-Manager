@@ -1,0 +1,492 @@
+/* ==================== MAIN CONTAINER ==================== */
+.container {
+    flex: 1;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated Background Elements */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+    animation: float 20s ease-in-out infinite;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(118, 75, 162, 0.1) 0%, transparent 70%);
+    animation: float 25s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(30px, -30px) rotate(120deg);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) rotate(240deg);
+    }
+}
+
+/* ==================== MAIN BOX ==================== */
+.box {
+    width: 100%;
+    max-width: 900px;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.6s ease-out;
+    transition: all var(--transition-base);
+}
+
+.box:hover {
+    box-shadow: var(--shadow-glow);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== HEADER ==================== */
+.task {
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+.task h1 {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 700;
+    background: var(--success-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.02em;
+}
+
+/* ==================== INPUT FIELD ==================== */
+.field {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    flex-wrap: wrap;
+}
+
+.input {
+    flex: 1;
+    min-width: 250px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--bg-glass);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-full);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all var(--transition-base);
+    outline: none;
+}
+
+.input::placeholder {
+    color: var(--text-muted);
+}
+
+.input:focus {
+    border-color: var(--accent-primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.input:hover {
+    border-color: rgba(102, 126, 234, 0.5);
+}
+
+/* ==================== BUTTONS ==================== */
+.btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: var(--radius-full);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-md);
+    white-space: nowrap;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+#btn {
+    background: var(--danger-gradient);
+}
+
+#btn:hover {
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(245, 87, 108, 0.4);
+}
+
+/* ==================== YOUR TODOS SECTION ==================== */
+.Your-todos {
+    padding: var(--spacing-lg);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.your-todos-box {
+    width: 100%;
+}
+
+.Your-todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.Your-todo h1 {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.finish {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 1rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+    transition: color var(--transition-base);
+}
+
+.finish:hover {
+    color: var(--text-primary);
+}
+
+.finish input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--accent-primary);
+}
+
+/* ==================== TODOS LIST ==================== */
+.todos {
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.todos::-webkit-scrollbar {
+    width: 6px;
+}
+
+.todos::-webkit-scrollbar-track {
+    background: var(--bg-glass);
+    border-radius: var(--radius-full);
+}
+
+.todos::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: var(--radius-full);
+}
+
+.todos::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-secondary);
+}
+
+/* ==================== TODO ITEM ==================== */
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: var(--bg-glass);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.todo:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-primary);
+    transform: translateX(4px);
+}
+
+.first {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex: 1;
+    min-width: 0;
+}
+
+.check {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--accent-success);
+    flex-shrink: 0;
+}
+
+.todo-text {
+    flex: 1;
+    color: var(--text-primary);
+    font-size: 1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+}
+
+.todo-text::-webkit-scrollbar {
+    height: 4px;
+}
+
+.todo-text::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.todo-text::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: var(--radius-full);
+}
+
+.line-through {
+    text-decoration: line-through;
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+.buttons {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.buttons .btn {
+    min-width: auto;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1.125rem;
+}
+
+.buttons .btn:first-child {
+    background: var(--success-gradient);
+}
+
+.buttons .btn:first-child:hover {
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(79, 172, 254, 0.4);
+}
+
+.buttons .btn:last-child {
+    background: var(--danger-gradient);
+}
+
+.buttons .btn:last-child:hover {
+    box-shadow: var(--shadow-lg), 0 0 20px rgba(245, 87, 108, 0.4);
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: var(--spacing-lg);
+    }
+
+    .box {
+        padding: var(--spacing-lg);
+    }
+
+    .field {
+        flex-direction: column;
+    }
+
+    .input {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .Your-todo {
+        /* flex-direction: column; */
+        align-items: flex-start;
+    }
+
+    .Your-todo #btn {
+        width: 100%;
+    }
+
+    .todos {
+        max-height: 350px;
+    }
+
+    .todo {
+        flex-wrap: wrap;
+        padding: var(--spacing-md);
+    }
+
+    .first {
+        width: 100%;
+    }
+
+    .buttons {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    .box {
+        padding: var(--spacing-md);
+        border-radius: var(--radius-lg);
+    }
+
+    .task h1 {
+        font-size: clamp(1.5rem, 5vw, 1.75rem);
+    }
+
+    .input {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9375rem;
+    }
+
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9375rem;
+    }
+
+    .Your-todo h1 {
+        font-size: clamp(1.125rem, 4vw, 1.25rem);
+    }
+
+    .finish {
+        font-size: 0.875rem;
+    }
+
+    .todos {
+        max-height: 300px;
+    }
+
+    .todo {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .todo-text {
+        font-size: 0.9375rem;
+    }
+
+    .buttons .btn {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .container {
+        padding: var(--spacing-sm);
+    }
+
+    .box {
+        padding: var(--spacing-sm);
+    }
+
+    .field {
+        gap: var(--spacing-sm);
+    }
+
+    .todos {
+        max-height: 250px;
+        gap: var(--spacing-sm);
+    }
+
+    .todo {
+        gap: var(--spacing-sm);
+    }
+
+    .first {
+        gap: var(--spacing-sm);
+    }
+
+    .buttons {
+        gap: var(--spacing-xs);
+    }
+}
