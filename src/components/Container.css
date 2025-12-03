@@ -418,6 +418,7 @@
     .box {
         padding: var(--spacing-md);
         border-radius: var(--radius-lg);
+        height: 80vh;
     }
 
     .task h1 {
@@ -443,7 +444,7 @@
     }
 
     .todos {
-        max-height: 300px;
+        max-height: 400px;
     }
 
     .todo {
