@@ -418,7 +418,7 @@
     .box {
         padding: var(--spacing-md);
         border-radius: var(--radius-lg);
-        height: 90vh;
+        /* height: 9vh; */
     }
 
     .task h1 {
