@@ -443,10 +443,6 @@
         font-size: 0.875rem;
     }
 
-    .todos {
-        max-height: 700px;
-    }
-
     .todo {
         padding: var(--spacing-sm) var(--spacing-md);
     }
@@ -475,7 +471,7 @@
     }
 
     .todos {
-        max-height: 250px;
+        /* max-height: 250px; */
         gap: var(--spacing-sm);
     }
 
