@@ -67,7 +67,10 @@ const Container = () => {
     const ToggleFinish = (e) => {
         setFinish(!finish)
     }
-
+    // Calculate stats
+    const totalTasks = todos.length;
+    const completedTasks = todos.filter(todo => todo.isCompleted).length;
+    const pendingTasks = totalTasks - completedTasks;
 
 
     return (
@@ -78,10 +81,31 @@ const Container = () => {
                     <input className='input' type="text" placeholder='Enter Todos...' onChange={change} value={todo} onKeyPress={handleKeyPress} />
                     <button className='btn' onClick={Add}>Add</button>
                 </div>
+                
+                {/* Stats Section - moved here */}
+                {todos.length > 0 && (
+                    <div className='stats-container'>
+                        <div className='stat-item'>
+                            <span className='stat-value'>{totalTasks}</span>
+                            <span className='stat-label'>Total</span>
+                        </div>
+                        <div className='stat-item'>
+                            <span className='stat-value'>{completedTasks}</span>
+                            <span className='stat-label'>Completed</span>
+                        </div>
+                        <div className='stat-item'>
+                            <span className='stat-value'>{pendingTasks}</span>
+                            <span className='stat-label'>Pending</span>
+                        </div>
+                    </div>
+                )}
+
                 <div className="Your-todos"> {todos.length > 0 ? <div className='your-todos-box'> <div className="Your-todo"><div><h1>Your Todos...</h1></div><div><button className="btn" id='btn' onClick={Empty}>Empty Todos</button></div></div> <div className='finish'><input type="checkbox" checked={finish} onChange={ToggleFinish} /> Show Finished </div> </div> : <div><h1>No Todos...</h1></div>}</div>
                 <div className="todos">
                     {todos.map((item, index) => {
                         return (finish || !item.isCompleted) && <div key={item.id} className="todo">
+
+                            <br />
                             <div className="first">
                                 <input className='check' type="checkbox" checked={item.isCompleted} onChange={checkbox} name={item.id} />
                                 <div className="todo-text"><div className={item.isCompleted ? "line-through" : ""}>{item.todo}</div></div>
